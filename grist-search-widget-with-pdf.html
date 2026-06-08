@@ -624,7 +624,49 @@
       .replace(/&/g,'&amp;').replace(/</g,'&lt;')
       .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
+  // -------------------------------------------------------------------------------------------------098
+  async function generatePDF(record) {
 
+  alert("PDF button works");
+
+  try {
+
+    const existingPdfBytes =
+      await fetch("./template.pdf")
+      .then(r => r.arrayBuffer());
+
+    const pdfDoc =
+      await PDFLib.PDFDocument.load(existingPdfBytes);
+
+    const page = pdfDoc.getPages()[0];
+
+    page.drawText("TEST", {
+      x: 100,
+      y: 100,
+      size: 50
+    });
+
+    const pdfBytes = await pdfDoc.save();
+
+    const blob =
+      new Blob([pdfBytes], {
+        type: "application/pdf"
+      });
+
+    const url =
+      URL.createObjectURL(blob);
+
+    window.open(url);
+
+  } catch(err) {
+
+    alert(err.message);
+
+    console.error(err);
+
+  }
+}
+  /*
   async function generatePDF(record) {
 
     const templateUrl = "./template.pdf";
@@ -682,6 +724,7 @@
 
     URL.revokeObjectURL(url);
   }
+  */
 
 
 </script>
