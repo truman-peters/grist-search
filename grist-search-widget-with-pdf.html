@@ -629,6 +629,8 @@
       .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
   // -------------------------------------------------------------------------------------------------098
+
+  /*
   async function generatePDF(record) {
 
   alert("PDF button works");
@@ -670,7 +672,8 @@
 
   }
 }
-  /*
+*/
+  
   async function generatePDF(record) {
 
     const templateUrl = "./template.pdf";
@@ -693,24 +696,24 @@
       today.getFullYear();
 
     page.drawText(String(record["Project Name"] || ''), {
-      x: 340, y: 1085, size: 13
+      x: 220, y: 10, size: 13
     });
 
     page.drawText(String(record["General Contractor"] || ''), {
-      x: 145, y: 970, size: 12
+      x: 120, y: 15, size: 12
     });
 
     page.drawText(String(record["Architect"] || ''), {
-      x: 510, y: 970, size: 12
+      x: 270, y: 15, size: 12
     });
 
     page.drawText(formattedDate, {
-      x: 650, y: 1085, size: 12
+      x: 650, y: 5, size: 12
     });
 
     page.drawText(String(record["Notes"] || ''), {
       x: 110,
-      y: 610,
+      y: 80,
       size: 11,
       maxWidth: 620,
       lineHeight: 14
@@ -728,7 +731,7 @@
 
     URL.revokeObjectURL(url);
   }
-  */
+  
 
 
 </script>
